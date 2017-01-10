@@ -3,6 +3,6 @@
   */
 object Main {
   def main(args: Array[String]): Unit = {
-    printf(ArraysAndStrings.hasAllUniqueCharsASCII("abcdefghijklmnopqrstuvwxyz").toString)
+    printf(ArraysAndStrings.isPermutationLinkedHashTable("hppio","poiph").toString)
   }
 }
