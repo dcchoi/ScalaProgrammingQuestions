@@ -1,3 +1,5 @@
+import scala.collection.immutable.Stream.Empty
+
 /**
   * Created by dccho on 1/4/2017.
   */
@@ -206,5 +208,31 @@ object ArraysAndStrings {
 
     }
     result
+  }
+
+  def stringCompression(str : String): String = {
+
+    var compressedStr = ""
+    var prevChar = ' '
+    var count = 0
+    for(i <- 0 to str.length-1){
+      if(i == 0){
+        prevChar = str(i)
+        count = 1
+      }
+      else if(i == 0){
+        count = count + 1
+        compressedStr = compressedStr + prevChar + count
+      }
+      else if(prevChar == str(i)){
+        count = count + 1
+      }else{
+        compressedStr = compressedStr + prevChar + count
+        prevChar = str(i)
+        count = 1
+      }
+
+    }
+  return compressedStr
   }
 }

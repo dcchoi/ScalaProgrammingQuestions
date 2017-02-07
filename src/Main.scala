@@ -3,6 +3,6 @@
   */
 object Main {
   def main(args: Array[String]): Unit = {
-    print(ArraysAndStrings.isOneAway("", "dd"))
+    print(ArraysAndStrings.stringCompression("aabcccccaaa"))
   }
 }
