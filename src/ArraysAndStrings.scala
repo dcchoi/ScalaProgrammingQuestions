@@ -183,11 +183,11 @@ object ArraysAndStrings {
     var i = 0
     var result = true
     while ((i < uneditedStr.length - 1 && i < editedStr.length -1) || !result) {
-      if(editedStr(i) == null){
+      if(editedStr(i) == '\0'){
         //could be insert
         result = oneAwayRemove(editedStr, uneditedStr, i)
       }
-      else if(uneditedStr(i) == null){
+      else if(uneditedStr(i) == '\0'){
         //could be remove
         result = oneAwayRemove(uneditedStr, editedStr, i)
       }
@@ -235,4 +235,44 @@ object ArraysAndStrings {
     }
   return compressedStr
   }
+
+  def rotateMatrix(size: Int): Array[Array[Byte]] = {
+
+    var rotateRight = (curMatrix: Array[Array[Byte]]) => {
+
+    var rotatedMatrix = Array.ofDim[Byte](size,size)
+
+      for(x <- 0 to size-1 by 1){
+        for(y <- size -1 to 0 by -1) {
+          rotatedMatrix(x)(y) = curMatrix(size-1-y)(x)
+        }
+      }
+
+      rotatedMatrix
+    }: Array[Array[Byte]]
+
+    var matrix = Array.ofDim[Byte](size,size)
+    for(x <- 0 to size-1){
+      for(y <- 0 to size-1){
+        val bytes = new Array[Byte](size)
+        var randomByte =  (scala.util.Random.nextInt(4) + 1).toByte
+        matrix(x)(y) = randomByte
+        print(matrix(x)(y))
+      }
+      println('\n')
+    }
+
+    val newMatrix = rotateRight(matrix)
+
+    for(i <- 0 to size-1){
+      for(j <- 0 to size-1){
+        print(newMatrix(i)(j))
+      }
+      println('\n')
+    }
+
+    return newMatrix
+  }
+
 }
+
